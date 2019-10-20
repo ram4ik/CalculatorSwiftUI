@@ -13,8 +13,18 @@ struct ContentView: View {
                   [4, 5, 6],
                   [1, 2, 3],
                   [0]]
+    var display = "0"
     var body: some View {
         VStack(spacing: 8) {
+            
+            Text(display)
+                .font(.largeTitle)
+                .padding(.all)
+                .frame(maxWidth: .infinity, alignment: .trailing)
+                .border(Color.blue)
+                .padding(.leading)
+                .padding(.trailing)
+            
             ForEach(digits, id:\.self) {rowDigits in
                 HStack(spacing: 8) {
                     ForEach(rowDigits, id: \.self) {digit in
