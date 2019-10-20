@@ -9,16 +9,23 @@
 import SwiftUI
 
 struct ContentView: View {
-    let digits = [7, 8, 9]
+    let digits = [[7, 8, 9],
+                  [4, 5, 6],
+                  [1, 2, 3],
+                  [0]]
     var body: some View {
-        HStack(spacing: 8) {
-            ForEach(digits, id: \.self) {digit in
-                Button("\(digit)", action: {
-                    print("digit \(digit) pressed")
-                }).frame(width: 64, height: 64)
-                    .border(Color.blue)
+        VStack(spacing: 8) {
+            ForEach(digits, id:\.self) {rowDigits in
+                HStack(spacing: 8) {
+                    ForEach(rowDigits, id: \.self) {digit in
+                        Button("\(digit)", action: {
+                            print("digit \(digit) pressed")
+                        }).frame(width: 64, height: 64)
+                            .border(Color.blue)
+                    }
+                   
+                }
             }
-           
         }
     }
 }
