@@ -10,7 +10,23 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello World")
+        HStack(spacing: 8) {
+            
+            Button("7", action: {
+                print("digit pressed")
+            }).frame(width: 64, height: 64)
+                .border(Color.blue)
+            
+            Button("8", action: {
+                print("digit pressed")
+            }).frame(width: 64, height: 64)
+                .border(Color.blue)
+            
+            Button("9", action: {
+                print("digit pressed")
+            }).frame(width: 64, height: 64)
+                .border(Color.blue)
+        }
     }
 }
 
