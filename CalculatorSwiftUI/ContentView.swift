@@ -11,6 +11,15 @@ import SwiftUI
 class CalculatorViewModel: ObservableObject {
     @Published var display = "0"
     @Published var userIsInTheMiddleOfTyping = false
+    
+    var displayValue: Double {
+        get {
+            return Double(display)!
+        }
+        set {
+            display = String(newValue)
+        }
+    }
 }
 
 struct ContentView: View {
@@ -37,7 +46,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView().environmentObject(CalculatorViewModel())
     }
 }
 
@@ -60,7 +69,9 @@ struct UnarySymbol: View {
     func performOperation(_ symbol: String) {
         switch symbol {
         case "∏":
-            calculatorVM.display = String(Double.pi)
+            calculatorVM.displayValue = Double.pi
+        case "√":
+            calculatorVM.displayValue = sqrt(calculatorVM.displayValue)
         default:
             break
         }
